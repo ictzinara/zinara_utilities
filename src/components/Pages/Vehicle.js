@@ -39,7 +39,18 @@ class Vehicle extends React.Component {
       event.preventDefault();
    }
     handleData() {
-fetch("http://41.60.204.194:8082/api/reg/" + this.state.VRN )
+      var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic aXRlZW1hZ0BsaXZlLmNvbTpARG1pbjEyMzQ=");
+    myHeaders.append("Content-Type", "application/json");
+
+  
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+fetch("http://zebssever.zin:8082/api/reg/" + this.state.VRN , requestOptions )
       .then(response => response.json())
       .then((result) =>{
         console.log(result);
